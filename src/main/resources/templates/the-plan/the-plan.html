@@ -11,7 +11,28 @@
 </head>
 <body>
 
-<nav th:replace="partials/navbar :: navbar"></nav>
+<!--<nav th:replace="partials/navbar :: navbar"></nav>-->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">HELP</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarNavAltMarkupTrue" aria-controls="navbarNavAltMarkup"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkupTrue">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/info">General Info</a>
+            <a class="nav-item nav-link" href="/our-team">Our Team</a>
+            <a class="nav-item nav-link" href="/the-checklist">Checklist</a>
+            <a class="nav-item nav-link" href="/profile">Profile</a>
+            <a class="nav-item nav-link" href="/the-plan">The Plan</a>
+            <form th:action="@{/logout}" th:method="post">
+                <button class="btn-link btn">Logout</button>
+            </form>
+        </div>
+    </div>
+</nav>
 <hr>
 
 
@@ -119,7 +140,7 @@
         <h3 class="col-6 text-center">URL</h3>
     </div>
     <div id="doc-container">
-        <ul class="myUL">
+        <ul class="items-ul">
         </ul>
     </div>
     <!--    </span>-->
@@ -143,13 +164,14 @@
 <footer th:replace="partials/footer :: footer"></footer>
 <div th:replace="partials/scripts :: scripts"></div>
 <!--ITEMS-->
+<script src="/js/map.js"></script>
 <script type="text/javascript">
     (function ($) {
         let request = $.ajax({'url': '/items.json'});
         request.done(function (items) {
             let html = '';
             items.forEach(function (item) {
-                html += '<li>' +
+                html += '<li class="items-li">' +
                     '<div class="row"><div class="col-6 text-center">' + item.title + '</div>' + " " +
                     '<div class="col-6 text-center">' + item.location + '</div></div>' +
                     '</li>';
