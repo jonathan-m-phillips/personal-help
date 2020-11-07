@@ -67,14 +67,29 @@ var map = new mapboxgl.Map({
     preserveDrawingBuffer: true
 });
 
+map.addControl(new mapboxgl.Directions());
+
+var directions = new mapboxgl.Directions({
+    unit: 'metric', // Use the metric system to display distances.
+    profile: 'driving', // Set the initial profile to driving.
+    container: 'directions', // Specify an element thats not the map container.
+    proximity: [-79.45, 43.65] // Give search results closer to these coordinates higher priority.
+});
+
+
+map.on('load', function() {
+    directions.setOrigin('Toronto, Ontario'); // On load, set the origin to "Toronto, Ontario".
+    directions.setDestination('Montreal, Quebec'); // On load, set the destination to "Montreal, Quebec".
+});
+
 map.scrollZoom.disable();
 
-map.addControl(
-    new MapboxDirections({
-        accessToken: mapboxgl.accessToken
-    }),
-    'top-left'
-);
+// map.addControl(
+//     new MapboxDirections({
+//         accessToken: mapboxgl.accessToken
+//     }),
+//     'top-left'
+// );
 
 // NAVIGATION BUTTONS
 const btn1 = function () {

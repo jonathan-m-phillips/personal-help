@@ -8,6 +8,7 @@
     <link th:replace="partials/links :: links"/>
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"/>
     <link th:replace="partials/checklist-links :: links"/>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v1.0.0/mapbox-gl-directions.css' rel='stylesheet' />
 </head>
 <body>
 
@@ -165,6 +166,7 @@
 <div th:replace="partials/scripts :: scripts"></div>
 <!--ITEMS-->
 <script src="/js/map.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v1.0.0/mapbox-gl-directions.js'></script>
 <script type="text/javascript">
     (function ($) {
         let request = $.ajax({'url': '/items.json'});
