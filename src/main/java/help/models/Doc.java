@@ -30,6 +30,7 @@ public class Doc {
     public Doc() {
     }
 
+
     public Doc(long id, String title, String url, User owner, Group group) {
         this.id = id;
         this.title = title;
